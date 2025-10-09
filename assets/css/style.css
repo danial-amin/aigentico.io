@@ -31,7 +31,7 @@
 }
 
 body {
-    font-family: 'Capriola', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
     color: var(--dark);
     line-height: 1.5;
     overflow-x: hidden;
