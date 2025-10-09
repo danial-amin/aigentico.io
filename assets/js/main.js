@@ -1,86 +1,29 @@
 // ==========================================================================
-// Site Configuration & Content Population
+// Theme Toggle System
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    initializeTechScroll();
-    initializeServices();
+    initializeTheme();
     initializeScrollAnimations();
+    initializeSmoothScroll();
     preventEasyEditing();
 });
 
-// ==========================================================================
-// Technology Scroll
-// ==========================================================================
-
-function initializeTechScroll() {
-    const technologies = [
-        '🤖 OpenAI GPT-4',
-        '⚡ Claude AI',
-        '🔷 Azure AI',
-        '🟢 LangChain',
-        '🐍 Python',
-        '⚛️ React',
-        '📊 TensorFlow',
-        '🔥 PyTorch',
-        '☁️ AWS',
-        '🌐 Node.js',
-        '🎯 FastAPI',
-        '🔵 Docker',
-        '📈 Kubernetes',
-        '💾 PostgreSQL',
-        '🔴 Redis'
-    ];
-
-    const scrollContent = document.getElementById('techScroll');
-    if (!scrollContent) return;
-
-    // Duplicate for infinite scroll effect
-    const duplicatedTech = [...technologies, ...technologies];
+function initializeTheme() {
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
     
-    scrollContent.innerHTML = duplicatedTech.map(tech => 
-        `<div class="tech-item">${tech}</div>`
-    ).join('');
-}
-
-// ==========================================================================
-// Services Population
-// ==========================================================================
-
-function initializeServices() {
-    const services = [
-        {
-            icon: '⚡',
-            title: 'Process Integrations',
-            description: 'Seamlessly embed AI into your existing workflows to enhance efficiency. We connect disparate systems to create a unified, intelligent operation.'
-        },
-        {
-            icon: '🤖',
-            title: 'Agentic Implementation',
-            description: 'Deploy autonomous AI agents that work continuously to optimize strategies and anticipate business needs without manual intervention.'
-        },
-        {
-            icon: '💡',
-            title: 'Consultation & Training',
-            description: 'Expert guidance and comprehensive training to help your team effectively leverage AI capabilities and drive sustainable innovation.'
-        },
-        {
-            icon: '🎯',
-            title: 'Custom AI Solutions',
-            description: 'Bespoke AI systems designed specifically for your business requirements. Fully owned and controlled by you, with no vendor lock-in.'
-        }
-    ];
-
-    const servicesGrid = document.querySelector('.services-grid');
-    if (!servicesGrid) return;
-
-    servicesGrid.innerHTML = services.map(service => `
-        <div class="service-card">
-            <div class="service-icon">${service.icon}</div>
-            <h3>${service.title}</h3>
-            <p>${service.description}</p>
-        </div>
-    `).join('');
+    // Check for saved theme preference or default to 'light'
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    
+    themeToggle.addEventListener('click', () => {
+        const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    });
 }
 
 // ==========================================================================
@@ -111,40 +54,21 @@ function initializeScrollAnimations() {
 }
 
 // ==========================================================================
-// Smooth Scroll for Navigation
+// Smooth Scroll for Navigation Links
 // ==========================================================================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// ==========================================================================
-// Contact Form Handler
-// ==========================================================================
-
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Here you would typically send to your backend
-        console.log('Form submitted:', data);
-        
-        // Show success message
-        alert('Thank you for your message! We\'ll get back to you soon.');
-        contactForm.reset();
+function initializeSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
 }
 
@@ -156,7 +80,7 @@ function preventEasyEditing() {
     // Disable right-click
     document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-    // Disable common developer shortcuts
+    // Disable common shortcuts
     document.addEventListener('keydown', (e) => {
         if (e.key === 'F12' || 
             (e.ctrlKey && e.shiftKey && e.key === 'I') ||

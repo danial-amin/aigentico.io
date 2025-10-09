@@ -3,39 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="aigentico - Intelligent AI solutions that transform how businesses operate">
-    <meta name="keywords" content="AI, agentic AI, business automation, machine learning">
-    <meta name="author" content="aigentico">
-    
     <title>aigentico — Intelligent AI Solutions</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/logo/favicon.ico">
-    
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/themes.css">
-    <link rel="stylesheet" href="assets/css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Capriola&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav>
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="assets/images/logo/logo-light.png" alt="aigentico logo">
+            <a href="#" class="logo">
+                <img src="assets/images/logo-light.png" alt="aigentico" class="logo-icon logo-light">
+                <img src="assets/images/logo-dark.png" alt="aigentico" class="logo-icon logo-dark">
+                <span class="logo-text">aigentico</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button></li>
-                <li><a href="contact.html" class="btn-primary">Book Now</a></li>
+                <li><a href="#contact" class="btn-primary">Book Now</a></li>
             </ul>
         </div>
     </nav>
@@ -55,8 +44,8 @@
             </h1>
             <p>Seamlessly integrate intelligent AI into your operations to solve complex challenges, unlock new possibilities, and empower your business to grow smarter.</p>
             <div class="hero-buttons">
-                <a href="contact.html" class="btn-primary">Schedule Discovery Call</a>
-                <a href="services.html" class="btn-secondary">Explore Services</a>
+                <a href="#contact" class="btn-primary">Schedule Discovery Call</a>
+                <a href="#services" class="btn-secondary">Explore Services</a>
             </div>
         </div>
     </section>
@@ -85,8 +74,27 @@
     <div class="tech-scroll">
         <h3>Technologies We Master</h3>
         <div class="scroll-container">
-            <div class="scroll-content" id="techScroll">
-                <!-- Populated by JS -->
+            <div class="scroll-content">
+                <div class="tech-item">🤖 OpenAI GPT-4</div>
+                <div class="tech-item">⚡ Claude AI</div>
+                <div class="tech-item">🔷 Azure AI</div>
+                <div class="tech-item">🟢 LangChain</div>
+                <div class="tech-item">🐍 Python</div>
+                <div class="tech-item">⚛️ React</div>
+                <div class="tech-item">📊 TensorFlow</div>
+                <div class="tech-item">🔥 PyTorch</div>
+                <div class="tech-item">☁️ AWS</div>
+                <div class="tech-item">🌐 Node.js</div>
+                <div class="tech-item">🤖 OpenAI GPT-4</div>
+                <div class="tech-item">⚡ Claude AI</div>
+                <div class="tech-item">🔷 Azure AI</div>
+                <div class="tech-item">🟢 LangChain</div>
+                <div class="tech-item">🐍 Python</div>
+                <div class="tech-item">⚛️ React</div>
+                <div class="tech-item">📊 TensorFlow</div>
+                <div class="tech-item">🔥 PyTorch</div>
+                <div class="tech-item">☁️ AWS</div>
+                <div class="tech-item">🌐 Node.js</div>
             </div>
         </div>
     </div>
@@ -100,27 +108,92 @@
         </div>
     </div>
 
-    <!-- Services Preview -->
-    <section id="services-preview">
+    <!-- Services Section -->
+    <section id="services">
         <span class="section-label">What We Offer</span>
         <h2>Our Services</h2>
         <p class="section-intro">We advance efficiency and reduce operational costs with intelligent agentic AI, refined processes, and smart automation.</p>
         
         <div class="services-grid">
-            <!-- Services loaded from config -->
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Process Integrations</h3>
+                <p>Seamlessly embed AI into your existing workflows to enhance efficiency. We connect disparate systems to create a unified, intelligent operation.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>Agentic Implementation</h3>
+                <p>Deploy autonomous AI agents that work continuously to optimize strategies and anticipate business needs without manual intervention.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💡</div>
+                <h3>Consultation & Training</h3>
+                <p>Expert guidance and comprehensive training to help your team effectively leverage AI capabilities and drive sustainable innovation.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Custom AI Solutions</h3>
+                <p>Bespoke AI systems designed specifically for your business requirements. Fully owned and controlled by you, with no vendor lock-in.</p>
+            </div>
         </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <span class="section-label">How We Work</span>
+        <h2>Our Process</h2>
+        <p class="section-intro">A systematic methodology that transforms complexity into clarity, delivering intelligent solutions with measurable outcomes.</p>
         
-        <div style="text-align: center; margin-top: 60px;">
-            <a href="services.html" class="btn-secondary">View All Services</a>
+        <div class="process-grid">
+            <div class="process-step">
+                <span class="step-number">01</span>
+                <h3>Discovery & Analysis</h3>
+                <p>Deep dive into your operations to identify optimization opportunities and integration points for maximum impact.</p>
+            </div>
+            <div class="process-step">
+                <span class="step-number">02</span>
+                <h3>Strategy & Architecture</h3>
+                <p>Design custom AI architecture with clear success metrics and alignment to your business objectives.</p>
+            </div>
+            <div class="process-step">
+                <span class="step-number">03</span>
+                <h3>Development & Integration</h3>
+                <p>Agile implementation with continuous feedback loops, ensuring seamless integration with existing systems.</p>
+            </div>
+            <div class="process-step">
+                <span class="step-number">04</span>
+                <h3>Optimization & Support</h3>
+                <p>Ongoing refinement and scaling with comprehensive team training and dedicated technical support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <span class="section-label">The Team</span>
+        <h2>Meet the experts</h2>
+        <p class="section-intro">A dedicated team of AI specialists committed to transforming businesses through intelligent automation.</p>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-photo"></div>
+                <h3>Danial Amin</h3>
+                <p class="team-role">Founder & AI Strategist</p>
+            </div>
+            <div class="team-member">
+                <div class="team-photo"></div>
+                <h3>Emmett Marsh</h3>
+                <p class="team-role">Technical Lead</p>
+            </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta">
+    <section id="contact" class="cta">
         <div class="cta-content">
             <h2>Ready to transform your business?</h2>
-            <p>Partner with us to implement intelligent, autonomous AI solutions that anticipate needs, optimize strategies, and drive sustainable growth.</p>
-            <a href="contact.html" class="btn-primary btn-white">Schedule Free Consultation</a>
+            <p>Partner with us to implement intelligent, autonomous AI solutions that anticipate needs, optimize strategies, and drive sustainable growth. Let's build your competitive advantage together.</p>
+            <a href="mailto:contact@aigentico.io" class="btn-primary btn-white">Schedule Free Consultation</a>
         </div>
     </section>
 
@@ -134,43 +207,40 @@
             <div class="footer-links">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="services.html#process-integration">Process Integration</a></li>
-                    <li><a href="services.html#agentic-ai">Agentic AI</a></li>
-                    <li><a href="services.html#consultation">Consultation</a></li>
-                    <li><a href="services.html#custom">Custom Solutions</a></li>
+                    <li><a href="#services">Process Integration</a></li>
+                    <li><a href="#services">Agentic AI</a></li>
+                    <li><a href="#services">Consultation</a></li>
+                    <li><a href="#services">Custom Solutions</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="about.html#team">Team</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="about.html#careers">Careers</a></li>
+                    <li><a href="#team">About Us</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="pages/privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="pages/terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
             <p>© 2025 aigentico.io — All rights reserved</p>
             <div class="footer-social">
-                <a href="https://linkedin.com/company/aigentico" target="_blank">LinkedIn</a>
-                <a href="https://twitter.com/aigentico" target="_blank">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
                 <a href="mailto:contact@aigentico.io">Email</a>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="config/site-config.js"></script>
-    <script src="assets/js/theme-toggle.js"></script>
-    <script src="assets/js/animations.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
