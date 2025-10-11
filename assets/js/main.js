@@ -15,14 +15,23 @@ function initializeTheme() {
     const themeToggleDesktop = document.getElementById('themeToggleDesktop');
     const html = document.documentElement;
     
-    // Check for saved theme preference or default to 'light'
-    const currentTheme = localStorage.getItem('theme') || 'light';
+    // Function to get time-based theme
+    const getTimeBasedTheme = () => {
+        const hour = new Date().getHours();
+        // Dark mode from 6 PM (18:00) to 6 AM (6:00)
+        return (hour >= 18 || hour < 6) ? 'dark' : 'light';
+    };
+    
+    // Check for saved theme preference or use time-based default
+    const savedTheme = localStorage.getItem('theme');
+    const currentTheme = savedTheme || getTimeBasedTheme();
     html.setAttribute('data-theme', currentTheme);
     
     const updateThemeButtons = (theme) => {
-        const emoji = theme === 'dark' ? '☀️' : '🌙';
-        themeToggle.textContent = emoji;
-        themeToggleDesktop.textContent = emoji;
+        const icon = theme === 'dark' ? '☀️' : '🌙';
+        const text = theme === 'dark' ? 'Light' : 'Dark';
+        themeToggle.innerHTML = `${icon} <span>${text}</span>`;
+        themeToggleDesktop.innerHTML = `${icon} <span>${text}</span>`;
     };
     
     updateThemeButtons(currentTheme);
