@@ -979,8 +979,21 @@ footer {
 
     .mobile-menu-toggle {
         display: flex;
-        order: 2;
-        margin-left: auto;
+    }
+    
+    .desktop-theme {
+        display: none;
+    }
+    
+    .theme-toggle-item {
+        display: block;
+    }
+    
+    .theme-toggle-item .theme-toggle {
+        width: 100%;
+        justify-content: flex-start;
+        border-radius: 12px;
+        padding: 16px;
     }
 
     .nav-right {
