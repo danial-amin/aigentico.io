@@ -87,7 +87,7 @@ nav .container {
 
 .logo-icon {
     height: 100%;
-    max-height: 40px;
+    max-height: 32px;
     width: auto;
     transition: opacity 0.3s ease;
     object-fit: contain;
@@ -111,7 +111,7 @@ nav .container {
 
 .logo-text {
     font-family: 'Capriola', sans-serif;
-    font-size: 24px;
+    font-size: 20px;
     color: var(--dark);
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -919,7 +919,10 @@ footer {
     }
 
     .nav-right {
-        gap: 16px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        flex-direction: row-reverse;
     }
 
     nav ul {
