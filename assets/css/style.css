@@ -917,13 +917,16 @@ footer {
 
     .mobile-menu-toggle {
         display: flex;
+        order: 2;
+    }
+
+    .theme-toggle {
+        order: 1;
+        margin-right: 8px;
     }
 
     .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        flex-direction: row-reverse;
+        gap: 16px;
     }
 
     nav ul {
