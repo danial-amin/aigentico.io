@@ -30,8 +30,8 @@ function initializeTheme() {
     const updateThemeButtons = (theme) => {
         const icon = theme === 'dark' ? '☀️' : '🌙';
         const text = theme === 'dark' ? 'Light' : 'Dark';
-        themeToggle.innerHTML = `${icon} <span>${text}</span>`;
-        themeToggleDesktop.innerHTML = `${icon} <span>${text}</span>`;
+        themeToggle.innerHTML = `<span class="theme-icon">${icon}</span><span class="theme-text">${text}</span>`;
+        themeToggleDesktop.innerHTML = `<span class="theme-icon">${icon}</span><span class="theme-text">${text}</span>`;
     };
     
     updateThemeButtons(currentTheme);

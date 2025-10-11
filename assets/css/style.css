@@ -973,18 +973,22 @@ footer {
         padding: 20px 24px;
     }
 
-    .mobile-menu-toggle {
-        display: flex;
+    .logo {
+        order: 1;
     }
 
-    .nav-right {
-        gap: 12px;
-        flex-direction: row;
+    .mobile-menu-toggle {
+        display: flex;
+        order: 2;
         margin-left: auto;
     }
 
-    .theme-toggle {
-        padding: 10px 16px;
+    .nav-right {
+        display: none;
+    }
+
+    .desktop-theme {
+        display: none;
     }
 
     nav ul {
