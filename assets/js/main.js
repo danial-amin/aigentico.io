@@ -12,19 +12,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initializeTheme() {
     const themeToggle = document.getElementById('themeToggle');
+    const themeToggleDesktop = document.getElementById('themeToggleDesktop');
     const html = document.documentElement;
     
     // Check for saved theme preference or default to 'light'
     const currentTheme = localStorage.getItem('theme') || 'light';
     html.setAttribute('data-theme', currentTheme);
-    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
     
-    themeToggle.addEventListener('click', () => {
+    const updateThemeButtons = (theme) => {
+        const emoji = theme === 'dark' ? '☀️' : '🌙';
+        themeToggle.textContent = emoji;
+        themeToggleDesktop.textContent = emoji;
+    };
+    
+    updateThemeButtons(currentTheme);
+    
+    const toggleTheme = () => {
         const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         html.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
-        themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-    });
+        updateThemeButtons(theme);
+    };
+    
+    themeToggle.addEventListener('click', toggleTheme);
+    themeToggleDesktop.addEventListener('click', toggleTheme);
 }
 
 // ==========================================================================
