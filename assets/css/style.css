@@ -163,6 +163,12 @@ nav a:hover {
     gap: 24px;
 }
 
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
