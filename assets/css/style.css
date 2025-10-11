@@ -161,6 +161,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     gap: 24px;
+    flex-direction: row-reverse;
 }
 
 .mobile-menu-toggle {
