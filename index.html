@@ -19,21 +19,25 @@
                 <img src="assets/images/logo/logo-dark.png" alt="aigentico" class="logo-icon logo-dark">
                 <span class="logo-text">aigentico</span>
             </a>
+            
+            <div class="nav-right">
+                <ul id="navMenu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="theme-toggle-item"><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span class="theme-icon">🌙</span><span class="theme-text">Dark</span></button></li>
+                    <li><a href="#contact" class="btn-primary">Book Now</a></li>
+                </ul>
+                <button class="theme-toggle desktop-theme" id="themeToggleDesktop" aria-label="Toggle theme"><span class="theme-icon">🌙</span><span class="theme-text">Dark</span></button>
+            </div>
+            
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <div class="nav-right">
-                <ul id="navMenu">
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#process">Process</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#contact" class="btn-primary">Book Now</a></li>
-                </ul>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
-            </div>
         </div>
     </nav>
 
@@ -106,6 +110,43 @@
             </div>
         </div>
     </div>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <span class="section-label">About Us</span>
+            <h2>Pioneering the future of intelligent business</h2>
+            <p>At aigentico, we're not just another AI consultancy—we're your strategic partner in navigating the transformative landscape of artificial intelligence. Founded on the belief that every business deserves access to cutting-edge AI capabilities, we specialize in building autonomous, intelligent systems that work tirelessly to optimize your operations.</p>
+            
+            <p>With over 5 years of combined experience in AI development, machine learning, and business process optimization, our team has successfully delivered 25+ projects across diverse industries. From startups to established enterprises, we've helped organizations reduce operational costs, accelerate decision-making, and unlock new revenue streams through strategic AI implementation.</p>
+            
+            <p>What sets us apart is our commitment to creating solutions you truly own. No black boxes, no vendor lock-in—just transparent, scalable AI systems tailored precisely to your needs. Based in Australia and serving clients globally, we combine local expertise with international best practices to deliver world-class results.</p>
+
+            <div class="about-contact-info">
+                <div class="contact-info-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <h4>Location</h4>
+                        <p>10 Lancaster Street<br>Ingleburn, NSW 2565<br>Australia</p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <span class="contact-icon">📧</span>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:contact@aigentico.io">contact@aigentico.io</a></p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <span class="contact-icon">📞</span>
+                    <div>
+                        <h4>Phone</h4>
+                        <p><a href="tel:1300653054">1300 653 054</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Vision Section -->
     <div class="vision">
@@ -211,7 +252,13 @@
         <div class="cta-content">
             <h2>Ready to transform your business?</h2>
             <p>Partner with us to implement intelligent, autonomous AI solutions that anticipate needs, optimize strategies, and drive sustainable growth. Let's build your competitive advantage together.</p>
-            <a href="mailto:contact@aigentico.io" class="btn-primary btn-white">Schedule Free Consultation</a>
+            <div class="cta-contact-methods">
+                <a href="mailto:contact@aigentico.io" class="btn-primary btn-white">Schedule Free Consultation</a>
+                <div class="cta-contact-details">
+                    <a href="tel:1300653054" class="contact-link">📞 1300 653 054</a>
+                    <a href="mailto:contact@aigentico.io" class="contact-link">📧 contact@aigentico.io</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -220,7 +267,10 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>aigentico</h3>
-                <p>Intelligent AI solutions that transform how businesses operate. Based in Australia, serving clients globally.</p>
+                <p>Intelligent AI solutions that transform how businesses operate.</p>
+                <p class="footer-location">📍 10 Lancaster Street, Ingleburn, NSW 2565</p>
+                <p class="footer-contact">📧 <a href="mailto:contact@aigentico.io">contact@aigentico.io</a></p>
+                <p class="footer-contact">📞 <a href="tel:1300653054">1300 653 054</a></p>
             </div>
             <div class="footer-links">
                 <h4>Services</h4>
@@ -234,7 +284,7 @@
             <div class="footer-links">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="#team">About Us</a></li>
+                    <li><a href="#about">About Us</a></li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="#">Careers</a></li>

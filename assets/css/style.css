@@ -508,6 +508,113 @@ h1 {
 }
 
 /* ==========================================================================
+   About Section
+   ========================================================================== */
+
+.about {
+    padding: 140px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.about-content {
+    max-width: 1400px;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--gray-600);
+    margin-bottom: 24px;
+}
+
+.about-contact-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 32px;
+    background: var(--gray-100);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-info-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary) 0%, #FF8F70 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-info-item:hover::before {
+    transform: scaleX(1);
+}
+
+.contact-info-item:hover {
+    background: var(--light);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] .contact-info-item:hover {
+    box-shadow: 0 12px 40px rgba(255,255,255,0.08);
+}
+
+.contact-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary) 0%, #FF8F70 100%);
+    border-radius: 12px;
+}
+
+.contact-info-item h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.contact-info-item p {
+    font-size: 15px;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.contact-info-item a {
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-info-item a:hover {
+    color: var(--primary);
+}
+
+/* ==========================================================================
    Vision Section
    ========================================================================== */
 
@@ -805,6 +912,37 @@ h2 {
     opacity: 0.95;
 }
 
+.cta-contact-methods {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.cta-contact-details {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.contact-link:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
 /* ==========================================================================
    Footer
    ========================================================================== */
@@ -839,6 +977,24 @@ footer {
     font-size: 14px;
     line-height: 1.7;
     opacity: 0.7;
+}
+
+.footer-location,
+.footer-contact {
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.7;
+    margin-top: 12px;
+}
+
+.footer-contact a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer-contact a:hover {
+    opacity: 1;
 }
 
 .footer-links h4 {
@@ -906,6 +1062,15 @@ footer {
     .footer-content {
         grid-template-columns: 1fr 1fr;
         gap: 40px;
+    }
+    
+    .about-contact-info {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+    
+    .contact-info-item {
+        padding: 24px;
     }
 }
 
@@ -998,6 +1163,10 @@ footer {
         font-size: 36px;
     }
 
+    .about-contact-info {
+        grid-template-columns: 1fr;
+    }
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -1027,6 +1196,11 @@ footer {
     .tech-item {
         padding: 12px 24px;
         font-size: 14px;
+    }
+
+    .cta-contact-details {
+        flex-direction: column;
+        gap: 16px;
     }
 }
 
