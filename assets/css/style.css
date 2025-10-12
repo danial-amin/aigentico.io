@@ -970,6 +970,63 @@ footer {
     opacity: 1;
 }
 
+/* ===============================
+   Footer Contact (NEW)
+   =============================== */
+
+   footer .footer-contact {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 16px;
+  }
+  
+  footer .fc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+  }
+  
+  [data-theme="dark"] footer .fc-item {
+    background: var(--gray-900);
+    border-color: var(--gray-800);
+  }
+  
+  footer .fc-icon {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--primary), #FF8F70);
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  footer .fc-item a,
+  footer .fc-item address {
+    font-style: normal;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+    text-decoration: none;
+  }
+  
+  footer .fc-item a:hover {
+    text-decoration: underline;
+  }
+  
+  [data-theme="dark"] footer .fc-item a,
+  [data-theme="dark"] footer .fc-item address {
+    color: var(--light);
+  }
+  
+
 /* ==========================================================================
    Responsive Design
    ========================================================================== */
