@@ -316,6 +316,78 @@ nav a:hover {
     transform: translate(-50%, -50%);
     animation-delay: -14s;
 }
+/* ===============================
+   About Section (NEW)
+   =============================== */
+
+   .about {
+    background: var(--light);
+}
+
+.about .info-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.about .info-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 20px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.about .info-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"] .about .info-item:hover {
+    box-shadow: 0 12px 30px rgba(255,255,255,0.06);
+}
+
+.about .info-icon {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary) 0%, #FF8F70 100%);
+    font-size: 22px;
+    color: #fff;
+}
+
+.about .info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.about .info-text strong {
+    font-size: 18px;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+}
+
+.about .info-text strong a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.about .info-text strong a:hover {
+    text-decoration: underline;
+}
+
+.about .info-text span {
+    font-size: 13px;
+    color: var(--gray-600);
+}
 
 @keyframes blobFloat {
     0%, 100% {
@@ -920,6 +992,10 @@ footer {
 
     .nav-right {
         gap: 16px;
+    }
+
+    .about .info-list {
+        grid-template-columns: 1fr;
     }
 
     nav ul {
