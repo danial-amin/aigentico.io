@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Capriola&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="video" href="assets/images/about-office.mp4" type="video/mp4">
+    <link rel="preload" as="image" href="assets/images/about-office.jpg" type="image/jpeg">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -164,11 +166,27 @@
             </div>
           </div>
       
-          <!-- OPTIONAL IMAGE -->
-          <div class="about-media">
+         <!-- OPTIONAL MEDIA (video with fallback) -->
+        <div class="about-media">
+        <video
+            class="about-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="assets/images/about/about-office.jpg"
+            aria-label="A modern AI startup office with warm light and a small team collaborating around laptops">
+            <source src="assets/videos/about-office.mp4" type="video/mp4">
+            <!-- Image fallback if video can't play -->
+            <img src="assets/images/about/about-office.jpg" alt="Our workspace — aigentico team" loading="lazy" decoding="async">
+        </video>
+        <span class="about-caption">Our workspace — where humans and AI collaborate</span>
+        <noscript>
             <img src="assets/images/about/about-office.jpg" alt="Our workspace — aigentico team">
-            <span class="about-caption">Our workspace — where humans and AI collaborate</span>
-          </div>
+        </noscript>
+        </div>
+
         </div>
     </section>
            
