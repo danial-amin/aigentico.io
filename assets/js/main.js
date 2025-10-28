@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeScrollAnimations();
     initializeSmoothScroll();
     initializeMobileMenu();
+    initializeBlogPreview();
     preventEasyEditing();
 });
 
@@ -105,6 +106,82 @@ function initializeSmoothScroll() {
                 });
             }
         });
+    });
+}
+
+// ==========================================================================
+// Blog Preview
+// ==========================================================================
+
+function initializeBlogPreview() {
+    const blogPreviewGrid = document.getElementById('blogPreviewGrid');
+    if (!blogPreviewGrid) return;
+
+    // Blog posts data (same as in blog.js)
+    const blogPosts = [
+        {
+            id: 'future-of-agentic-ai',
+            title: 'The Future of Agentic AI: Beyond Simple Automation',
+            excerpt: 'Explore how agentic AI is revolutionizing business operations by creating autonomous systems that can reason, plan, and execute complex tasks.',
+            category: 'AI Trends',
+            date: '2025-01-15',
+            image: 'assets/images/blog/agentic-ai-future.jpg'
+        },
+        {
+            id: 'implementing-ai-workflows',
+            title: 'Implementing AI Workflows: A Practical Guide',
+            excerpt: 'Learn the step-by-step process of integrating AI into your existing workflows, from initial assessment to full deployment.',
+            category: 'Implementation',
+            date: '2025-01-12',
+            image: 'assets/images/blog/ai-workflows.jpg'
+        },
+        {
+            id: 'ai-security-best-practices',
+            title: 'AI Security Best Practices: Protecting Your Systems',
+            excerpt: 'Essential security considerations for AI implementations, including data protection, model security, and compliance.',
+            category: 'Security',
+            date: '2025-01-10',
+            image: 'assets/images/blog/ai-security.jpg'
+        }
+    ];
+
+    // Get latest 3 posts
+    const latestPosts = blogPosts.slice(0, 3);
+
+    // Render blog preview cards
+    latestPosts.forEach(post => {
+        const card = createBlogPreviewCard(post);
+        blogPreviewGrid.appendChild(card);
+    });
+}
+
+function createBlogPreviewCard(post) {
+    const card = document.createElement('article');
+    card.className = 'blog-preview-card';
+    card.innerHTML = `
+        <img src="${post.image}" alt="${post.title}" class="blog-preview-image" onerror="this.style.display='none'">
+        <div class="blog-preview-content">
+            <div class="blog-preview-meta">
+                <span class="blog-preview-date">${formatDate(post.date)}</span>
+                <span class="blog-preview-category">${post.category}</span>
+            </div>
+            <h3>${post.title}</h3>
+            <p class="blog-preview-excerpt">${post.excerpt}</p>
+            <a href="blog/posts/${post.id}.html" class="blog-preview-link">
+                Read More
+            </a>
+        </div>
+    `;
+    
+    return card;
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
     });
 }
 

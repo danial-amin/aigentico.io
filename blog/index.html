@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Insights & Industry News — aigentico Blog</title>
+    <meta name="description" content="Stay updated with the latest AI trends, industry insights, and practical guides from the aigentico team. Expert analysis on agentic AI, automation, and business transformation.">
+    <meta name="keywords" content="AI blog, agentic AI, artificial intelligence, automation, business AI, AI insights, machine learning, AI trends">
+    <meta name="author" content="aigentico">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aigentico.io/blog/">
+    <meta property="og:title" content="AI Insights & Industry News — aigentico Blog">
+    <meta property="og:description" content="Stay updated with the latest AI trends, industry insights, and practical guides from the aigentico team.">
+    <meta property="og:image" content="https://aigentico.io/assets/images/logo/logo-light.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://aigentico.io/blog/">
+    <meta property="twitter:title" content="AI Insights & Industry News — aigentico Blog">
+    <meta property="twitter:description" content="Stay updated with the latest AI trends, industry insights, and practical guides from the aigentico team.">
+    <meta property="twitter:image" content="https://aigentico.io/assets/images/logo/logo-light.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://aigentico.io/blog/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/logo/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Capriola&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "aigentico AI Insights",
+        "description": "Expert insights on AI, automation, and business transformation",
+        "url": "https://aigentico.io/blog/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "aigentico",
+            "url": "https://aigentico.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://aigentico.io/assets/images/logo/logo-light.png"
+            }
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "aigentico"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/logo/logo-light.png" alt="aigentico" class="logo-icon logo-light">
+                <img src="../assets/images/logo/logo-dark.png" alt="aigentico" class="logo-icon logo-dark">
+                <span class="logo-text">aigentico</span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-right">
+                <ul id="navMenu">
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#services">Services</a></li>
+                    <li><a href="../index.html#process">Process</a></li>
+                    <li><a href="../index.html#team">Team</a></li>
+                    <li><a href="index.html" class="nav-active">Blog</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                    <li><a href="../index.html#contact" class="btn-primary">Book Now</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <div class="container">
+            <div class="blog-header-content">
+                <span class="section-label">AI Insights</span>
+                <h1>Latest from our blog</h1>
+                <p class="section-intro">Expert insights on AI trends, automation strategies, and practical guides for business transformation. Stay ahead with actionable intelligence from our team.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="blog-posts">
+        <div class="container">
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog posts will be dynamically loaded here -->
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="blog-load-more">
+                <button class="btn-secondary" id="loadMoreBtn">Load More Posts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="blog-newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Get the latest AI insights delivered to your inbox. No spam, just valuable content.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>aigentico</h3>
+                <p>Intelligent AI solutions that transform how businesses operate. Based in Australia, serving clients globally.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="../index.html#services">Process Integration</a></li>
+                    <li><a href="../index.html#services">Agentic AI</a></li>
+                    <li><a href="../index.html#services">Consultation</a></li>
+                    <li><a href="../index.html#services">Custom Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../index.html#about">About Us</a></li>
+                    <li><a href="../index.html#team">Team</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                    <li><a href="index.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 aigentico.io — All rights reserved</p>
+            <div class="footer-social">
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="mailto:contact@aigentico.io">Email</a>
+            </div>
+        </div>
+        <div class="footer-contact">
+            <div class="fc-item">
+                <span class="fc-icon" aria-hidden="true">📞</span>
+                <a href="tel:1300653054">1300 653 054</a>
+            </div>
+            <div class="fc-item">
+                <span class="fc-icon" aria-hidden="true">📍</span>
+                <address>10 Lancaster Street, Ingleburn, NSW 2565</address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/blog.js"></script>
+</body>
+</html>
