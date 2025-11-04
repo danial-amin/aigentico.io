@@ -60,17 +60,31 @@ const BLOG_POSTS = [
         featured: false
     },
     {
-        id: 'automation-vs-intelligence',
-        title: 'Automation vs Intelligence: Understanding the Difference',
-        excerpt: 'Distinguish between traditional automation and intelligent AI systems, and learn when to apply each approach for maximum business impact.',
-        category: 'Strategy',
-        date: '2025-01-03',
-        readTime: '7 min read',
-        image: '../assets/images/blog/automation-intelligence.jpg',
-        author: 'Aqib Aziz',
-        featured: false
+        id: 'agentic-vs-traditional-vs-generative-ai',
+        title: 'Agentic AI vs Traditional AI vs Generative AI: A Complete Comparison Guide',
+        excerpt: 'Understand the key differences between Agentic AI, Traditional AI, and Generative AI. Learn which approach is right for your business needs with real-world examples and use cases.',
+        category: 'AI Technology',
+        date: '2025-10-29',
+        readTime: '12 min read',
+        image: '../assets/images/blog/ai-comparison.jpg',
+        author: 'Danial Amin',
+        featured: true
     }
 ];
+
+// Check if a blog post file exists
+async function blogPostExists(postId) {
+    try {
+        const cacheBuster = `?t=${Date.now()}`;
+        const response = await fetch(`posts/${postId}.html${cacheBuster}`, {
+            method: 'HEAD', // Only check if file exists, don't download content
+            cache: 'no-store'
+        });
+        return response.ok;
+    } catch (error) {
+        return false;
+    }
+}
 
 // Extract date from blog post HTML file
 // Always fetches fresh to ensure dates update when blog posts are modified
@@ -129,11 +143,28 @@ class BlogManager {
     }
     
     async init() {
+        // Filter to only include posts that actually exist
+        await this.filterExistingPosts();
         // Fetch dates for all posts before rendering
         await this.updatePostDates();
         this.renderBlogPosts();
         this.setupEventListeners();
         this.setupNewsletterForm();
+    }
+    
+    async filterExistingPosts() {
+        // Check which posts actually exist and filter the array
+        const existenceChecks = await Promise.all(
+            this.allPosts.map(async (post) => ({
+                post,
+                exists: await blogPostExists(post.id)
+            }))
+        );
+        
+        // Only keep posts that exist
+        this.allPosts = existenceChecks
+            .filter(check => check.exists)
+            .map(check => check.post);
     }
     
     async updatePostDates() {

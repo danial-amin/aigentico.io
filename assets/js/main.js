@@ -113,6 +113,20 @@ function initializeSmoothScroll() {
 // Blog Preview
 // ==========================================================================
 
+// Check if a blog post file exists
+async function blogPostExists(postId) {
+    try {
+        const cacheBuster = `?t=${Date.now()}`;
+        const response = await fetch(`blog/posts/${postId}.html${cacheBuster}`, {
+            method: 'HEAD', // Only check if file exists, don't download content
+            cache: 'no-store'
+        });
+        return response.ok;
+    } catch (error) {
+        return false;
+    }
+}
+
 // Extract date from blog post HTML file
 // Always fetches fresh to ensure dates update when blog posts are modified
 async function fetchBlogPostDate(postId) {
@@ -186,11 +200,31 @@ async function initializeBlogPreview() {
             category: 'Security',
             date: '2025-01-10', // Fallback date
             image: 'assets/images/blog/ai-security.jpg'
+        },
+        {
+            id: 'agentic-vs-traditional-vs-generative-ai',
+            title: 'Agentic AI vs Traditional AI vs Generative AI: A Complete Comparison Guide',
+            excerpt: 'Understand the key differences between Agentic AI, Traditional AI, and Generative AI. Learn which approach is right for your business needs.',
+            category: 'AI Technology',
+            date: '2025-10-29', // Fallback date
+            image: 'assets/images/blog/ai-comparison.jpg'
         }
     ];
 
-    // Fetch dates for all posts in parallel
-    const datePromises = blogPosts.map(async (post) => {
+    // Filter to only include posts that actually exist
+    const existenceChecks = await Promise.all(
+        blogPosts.map(async (post) => ({
+            post,
+            exists: await blogPostExists(post.id)
+        }))
+    );
+    
+    const existingPosts = existenceChecks
+        .filter(check => check.exists)
+        .map(check => check.post);
+
+    // Fetch dates for all existing posts in parallel
+    const datePromises = existingPosts.map(async (post) => {
         const fetchedDate = await fetchBlogPostDate(post.id);
         if (fetchedDate) {
             post.date = fetchedDate;
