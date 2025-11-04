@@ -113,7 +113,51 @@ function initializeSmoothScroll() {
 // Blog Preview
 // ==========================================================================
 
-function initializeBlogPreview() {
+// Extract date from blog post HTML file
+// Always fetches fresh to ensure dates update when blog posts are modified
+async function fetchBlogPostDate(postId) {
+    try {
+        // Add cache-busting query parameter to ensure fresh fetch
+        const cacheBuster = `?t=${Date.now()}`;
+        const response = await fetch(`blog/posts/${postId}.html${cacheBuster}`, {
+            cache: 'no-store' // Force fresh fetch, bypass browser cache
+        });
+        if (!response.ok) {
+            console.warn(`Failed to fetch blog post: ${postId}`);
+            return null;
+        }
+        
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        // Find JSON-LD script tag
+        const jsonLdScript = doc.querySelector('script[type="application/ld+json"]');
+        if (!jsonLdScript) {
+            console.warn(`No JSON-LD found in blog post: ${postId}`);
+            return null;
+        }
+        
+        try {
+            const jsonLd = JSON.parse(jsonLdScript.textContent);
+            // Prefer dateModified over datePublished if both exist (more recent)
+            const datePublished = jsonLd.dateModified || jsonLd.datePublished;
+            
+            if (datePublished) {
+                return datePublished;
+            }
+        } catch (e) {
+            console.warn(`Failed to parse JSON-LD for blog post: ${postId}`, e);
+        }
+        
+        return null;
+    } catch (error) {
+        console.warn(`Error fetching blog post date for ${postId}:`, error);
+        return null;
+    }
+}
+
+async function initializeBlogPreview() {
     const blogPreviewGrid = document.getElementById('blogPreviewGrid');
     if (!blogPreviewGrid) return;
 
@@ -124,7 +168,7 @@ function initializeBlogPreview() {
             title: 'The Future of Agentic AI: Beyond Simple Automation',
             excerpt: 'Explore how agentic AI is revolutionizing business operations by creating autonomous systems that can reason, plan, and execute complex tasks.',
             category: 'AI Trends',
-            date: '2025-01-15',
+            date: '2025-01-15', // Fallback date
             image: 'assets/images/blog/agentic-ai-future.jpg'
         },
         {
@@ -132,7 +176,7 @@ function initializeBlogPreview() {
             title: 'Implementing AI Workflows: A Practical Guide',
             excerpt: 'Learn the step-by-step process of integrating AI into your existing workflows, from initial assessment to full deployment.',
             category: 'Implementation',
-            date: '2025-01-12',
+            date: '2025-01-12', // Fallback date
             image: 'assets/images/blog/ai-workflows.jpg'
         },
         {
@@ -140,13 +184,27 @@ function initializeBlogPreview() {
             title: 'AI Security Best Practices: Protecting Your Systems',
             excerpt: 'Essential security considerations for AI implementations, including data protection, model security, and compliance.',
             category: 'Security',
-            date: '2025-01-10',
+            date: '2025-01-10', // Fallback date
             image: 'assets/images/blog/ai-security.jpg'
         }
     ];
 
-    // Get latest 3 posts
-    const latestPosts = blogPosts.slice(0, 3);
+    // Fetch dates for all posts in parallel
+    const datePromises = blogPosts.map(async (post) => {
+        const fetchedDate = await fetchBlogPostDate(post.id);
+        if (fetchedDate) {
+            post.date = fetchedDate;
+        }
+        return post;
+    });
+
+    // Wait for all dates to be fetched
+    const postsWithDates = await Promise.all(datePromises);
+
+    // Get latest 3 posts, sorted by date
+    const latestPosts = postsWithDates
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 3);
 
     // Render blog preview cards
     latestPosts.forEach(post => {
