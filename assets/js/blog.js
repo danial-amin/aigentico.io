@@ -72,6 +72,51 @@ const BLOG_POSTS = [
     }
 ];
 
+// Extract date from blog post HTML file
+// Always fetches fresh to ensure dates update when blog posts are modified
+async function fetchBlogPostDate(postId) {
+    try {
+        // Add cache-busting query parameter to ensure fresh fetch
+        const cacheBuster = `?t=${Date.now()}`;
+        // Path is relative to blog/index.html, so posts are in posts/ folder
+        const response = await fetch(`posts/${postId}.html${cacheBuster}`, {
+            cache: 'no-store' // Force fresh fetch, bypass browser cache
+        });
+        if (!response.ok) {
+            console.warn(`Failed to fetch blog post: ${postId}`);
+            return null;
+        }
+        
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        // Find JSON-LD script tag
+        const jsonLdScript = doc.querySelector('script[type="application/ld+json"]');
+        if (!jsonLdScript) {
+            console.warn(`No JSON-LD found in blog post: ${postId}`);
+            return null;
+        }
+        
+        try {
+            const jsonLd = JSON.parse(jsonLdScript.textContent);
+            // Prefer dateModified over datePublished if both exist (more recent)
+            const datePublished = jsonLd.dateModified || jsonLd.datePublished;
+            
+            if (datePublished) {
+                return datePublished;
+            }
+        } catch (e) {
+            console.warn(`Failed to parse JSON-LD for blog post: ${postId}`, e);
+        }
+        
+        return null;
+    } catch (error) {
+        console.warn(`Error fetching blog post date for ${postId}:`, error);
+        return null;
+    }
+}
+
 // Blog functionality
 class BlogManager {
     constructor() {
@@ -83,10 +128,29 @@ class BlogManager {
         this.init();
     }
     
-    init() {
+    async init() {
+        // Fetch dates for all posts before rendering
+        await this.updatePostDates();
         this.renderBlogPosts();
         this.setupEventListeners();
         this.setupNewsletterForm();
+    }
+    
+    async updatePostDates() {
+        // Fetch dates for all posts in parallel
+        const datePromises = this.allPosts.map(async (post) => {
+            const fetchedDate = await fetchBlogPostDate(post.id);
+            if (fetchedDate) {
+                post.date = fetchedDate;
+            }
+            return post;
+        });
+        
+        // Wait for all dates to be fetched and update posts
+        await Promise.all(datePromises);
+        
+        // Sort posts by date after updating
+        this.allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
     }
     
     renderBlogPosts() {
